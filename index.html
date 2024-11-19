@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Game Distributor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header with Navbar -->
+    <header>
+        <nav>
+            <a href="#" class="logo">GameHub</a>
+            <a href="#" onclick="toggleAccountMenu()" class="login-btn">My Account</a>
+        </nav>
+        <div class="account-menu" id="account-menu" style="display: none;">
+            <button onclick="openLoginModal('user')">User Login</button>
+            <button onclick="openLoginModal('creator')">Game Creator Login</button>
+            <button onclick="openLoginModal('admin')">Administrator Login</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Homepage Section -->
+        <section id="homepage" style="display: block;">
+            <h1>Digital Game Distributor</h1>
+            <p>Welcome to the Digital Game Distributor! Please log in to access your role-specific features.</p>
+        </section>
+
+        <!-- User Section -->
+        <section id="user-section" style="display: none;">
+            <h2>User - Browse and Manage Cart</h2>
+            <div id="game-section">
+                <h3>Available Games</h3>
+                <div id="game-list"></div>
+            </div>
+            <button id="view-cart">View Cart</button>
+            <div id="cart-section" style="display: none;">
+                <h3>Your Cart</h3>
+                <ul id="cart-list"></ul>
+                <button id="checkout">Checkout</button>
+                <button onclick="showGames()">Back to Games</button>
+            </div>
+        </section>
+
+        <!-- Game Creator Section -->
+        <section id="creator-section" style="display: none;">
+            <h2>Game Creator - Create and Upload Games</h2>
+
+            <!-- Specify Game Detail Process -->
+            <div id="game-detail">
+                <label>Game Title: <input type="text" id="game-name"></label><br>
+                <label>Description: <textarea id="game-description"></textarea></label><br>
+                <label>Game File Link: <input type="url" id="game-file"></label><br>
+                <label>Price: <input type="number" id="game-price"></label><br>
+                <label>Creator's Name: <input type="text" id="creator-name"></label><br>
+                <button onclick="createGame()">Create Game</button>
+            </div>
+
+            <!-- Add Game Requirements Process -->
+            <div id="game-requirements">
+                <h3>Add Game Requirements</h3>
+                <label>Operating System: <input type="text" id="game-os"></label><br>
+                <label>Hardware Requirements: <input type="text" id="game-hardware"></label><br>
+                <label>Age Rating: <input type="text" id="game-age-rating"></label><br>
+                <label>Rating: <input type="number" id="game-rating" min="0" max="5" step="0.1"></label><br>
+                <button onclick="addGameRequirements()">Add Requirements</button>
+            </div>
+
+            <h3>Uploaded Games (Pending Approval)</h3>
+            <ul id="uploaded-games-list"></ul>
+        </section>
+
+        <!-- Administrator Section -->
+        <section id="admin-section" style="display: none;">
+            <h2>Administrator - Approve or Reject Games</h2>
+            <h3>Pending Games</h3>
+            <ul id="pending-games-list"></ul>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="login-modal">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter username" /><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password" /><br><br>
+        <button onclick="submitLogin()">Submit</button>
+        <button onclick="closeLoginModal()">Cancel</button>
+    </div>
+
+    <!-- Success and Failure Messages -->
+    <div id="message-modal">
+        <span id="message-text"></span><br><br>
+        <button onclick="closeMessageModal()">OK</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
